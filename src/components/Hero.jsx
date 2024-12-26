@@ -1,6 +1,6 @@
 import profilePic from "../assets/raviKumarProfile.webp"
 import {HERO_CONTENT} from "../constants"
-import {motion} from "framer-motion"
+import { motion } from "framer-motion"
 const containerVariants={
   hidden:{opacity:0, x:-100},
   visible:{
