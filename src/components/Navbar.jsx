@@ -22,12 +22,6 @@ const Navbar = () => {
                 aria-label="GitHub">
                 <FaGithub/>
             </a>
-            <a href="https://www.linkedin.com/in/satyam-pandey-a278821b2/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="Linkedin">
-                <FaInstagram/>
-            </a>
             <a href="https://x.com/SatyamP40424099" 
                 target="_blank" 
                 rel="noopener noreferrer"

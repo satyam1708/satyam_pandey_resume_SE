@@ -1,4 +1,4 @@
-import profilePic from "../assets/raviKumarProfile.webp"
+import profilePic from "../assets/SatyamPandeyProfilePic.jpeg"
 import {HERO_CONTENT} from "../constants"
 import { motion } from "framer-motion"
 const containerVariants={
@@ -59,7 +59,7 @@ function Hero() {
                 </motion.p>
                 <motion.a
                  variants={childVariants} 
-                 href="/resume.pdf"
+                 href="/Satyam_Pandey_UI_Developer.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     download
