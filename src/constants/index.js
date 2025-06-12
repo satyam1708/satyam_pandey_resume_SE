@@ -1,11 +1,7 @@
-import project1 from "../assets/projects/project-1.webp";
-import project2 from "../assets/projects/project-2.webp";
-import project3 from "../assets/projects/project-3.webp";
-import project4 from "../assets/projects/project-4.webp";
 
-export const HERO_CONTENT = `I am a passionate full stack developer with a knack for crafting robust and scalable web applications. With almost 2 years of hands-on experience, I have honed my skills in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, PostgreSQL, and MongoDB. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences.`;
+export const HERO_CONTENT = `Frontend-Focused Full Stack Developer with 2+ years of experience building scalable UIs and real-time web applications. I specialize in React.js, Redux Toolkit, Next.js, and Node.js, and have hands-on experience with PostgreSQL, Prisma, and MongoDB. I enjoy transforming product ideas into fast, reliable, and user-centric solutions across the full stack.`;
 
-export const ABOUT_TEXT = `I am a dedicated and versatile full stack developer with a passion for creating efficient and user-friendly web applications. With 5 years of professional experience, I have worked with a variety of technologies, including React, Next.js, Node.js, MySQL, PostgreSQL, and MongoDB. My journey in web development began with a deep curiosity for how things work, and it has evolved into a career where I continuously strive to learn and adapt to new challenges. I thrive in collaborative environments and enjoy solving complex problems to deliver high-quality solutions. Outside of coding, I enjoy staying active, exploring new technologies, and contributing to open-source projects.`;
+export const ABOUT_TEXT = `I'm a frontend-focused full stack developer with over 2 years of experience delivering robust and scalable web applications. My core tech stack includes React.js, Redux Toolkit, Next.js, Node.js, Express.js, PostgreSQL with Prisma ORM, and MongoDB. I’ve built enterprise systems, real-time dashboards, and secure APIs at companies like Hughes Systique and HighRadius. I take pride in crafting intuitive user interfaces backed by clean, efficient backend logic. Passionate about performance and product quality, I continuously explore new technologies and aim to build solutions that make a real impact.`;
 
 export const EXPERIENCES = [
   {
@@ -44,37 +40,46 @@ export const EXPERIENCES = [
 
 export const PROJECTS = [
   {
-    title: "E-Commerce Website",
-    image: project1,
+    title: "SarvaNews",
     description:
-      "A fully functional e-commerce website with features like product listing, shopping cart, and user authentication.",
-    technologies: ["HTML", "CSS", "React", "Node.js", "MongoDB"],
+      "A full-stack real-time news aggregator. The frontend fetches top headlines using NewsAPI, while the backend is built with Node.js and Express.js, using PostgreSQL and Prisma for storing user preferences and caching. Responsive and scalable.",
+    image: "/images/sarvanews.png",
+    technologies: [
+      "React.js",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Prisma",
+      "NewsAPI",
+      "Vercel",
+    ],
+    demo: "https://thesarvanews.vercel.app/",
+    github: "https://github.com/satyam1708/sarvanews",
   },
   {
-    title: "Task Management App",
-    image: project2,
+    title: "MovieManch",
     description:
-      "An application for managing tasks and projects, with features such as task creation, assignment, and progress tracking.",
-    technologies: ["HTML", "CSS", "Angular", "Firebase"],
+      "A movie discovery app using TMDB API. Users can browse trending, upcoming, and top-rated movies with detailed information. Clean UI and responsive design.",
+    image: "/images/moviemanch.png",
+    technologies: ["React.js", "TMDB API", "Tailwind CSS", "Vercel"],
+    demo: "https://moviemanch.vercel.app/",
+    github: "https://github.com/satyam1708/moviemanch",
   },
   {
-    title: "Portfolio Website",
-    image: project3,
+    title: "TextNova",
     description:
-      "A personal portfolio website showcasing projects, skills, and contact information.",
-    technologies: ["HTML", "CSS", "React", "Bootstrap"],
-  },
-  {
-    title: "Blogging Platform",
-    image: project4,
-    description:
-      "A platform for creating and publishing blog posts, with features like rich text editing, commenting, and user profiles.",
-    technologies: ["HTML", "CSS", "Vue.js", "Express", "mySQL"],
+      "A simple and fast text utility tool to convert text to different cases, count words/characters, and remove extra spaces. Built with performance and clean UI in mind.",
+    image: "/images/textnova.png",
+    technologies: ["React.js", "Tailwind CSS", "JavaScript", "Vercel"],
+    demo: "https://textnova.vercel.app/",
+    github: "https://github.com/satyam1708/textnova",
   },
 ];
+
 
 export const CONTACT = {
   address: "Dwarikapuri Colony, Faizullaganj, Lucknow, Uttar Pradesh - 226020 ",
   phoneNo: "+91 8303081204 ",
-  email: "satyampandey1708@gmail.com",
+  email: "pandeysatyam1708@gmail.com",
 };

@@ -1,4 +1,4 @@
-import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import logo from "../assets/splogo.png"
 import { FaSquareXTwitter } from "react-icons/fa6";
 const Navbar = () => {
