@@ -40,6 +40,22 @@ export const EXPERIENCES = [
 
 export const PROJECTS = [
   {
+    title: "Real Estate AI Chatbot (PropBot)",
+    description:
+      "A generative AI-powered chatbot for real estate queries. Integrates OpenAI API with function calling to provide conversational answers and property filtering by location and price.",
+    image: "/images/propbot.png", // placeholder, update if you have
+    technologies: [
+      "React.js",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "OpenAI API",
+      "Vercel",
+    ],
+    demo: "https://propbotsp.vercel.app/",
+    github: "", // add if available
+  },
+  {
     title: "SarvaNews",
     description:
       "A full-stack real-time news aggregator. The frontend fetches top headlines using NewsAPI, while the backend is built with Node.js and Express.js, using PostgreSQL and Prisma for storing user preferences and caching. Responsive and scalable.",
@@ -75,6 +91,34 @@ export const PROJECTS = [
     demo: "https://textnova.vercel.app/",
     github: "https://github.com/satyam1708/textnova",
   },
+  {
+    title: "MitrLok",
+    description:
+      "A full-stack social networking app designed to connect users based on interests and location. Features include real-time messaging, follow requests, user filtering, and secure authentication.",
+    image: "/images/mitrlok.png", // placeholder, update if you have
+    technologies: [
+      "Next.js",
+      "React.js",
+      "Redux",
+      "Node.js",
+      "Express.js",
+      "Prisma",
+      "PostgreSQL",
+      "Socket.io",
+      "Tailwind CSS",
+    ],
+    demo: "#", // no link currently
+    github: "", // add link if available
+  },
+  {
+    title: "MyPortfolio",
+    description:
+      "Personal portfolio website showcasing projects, skills, and experience. Built with a clean UI and responsive design.",
+    image: "/images/portfolio.png", // placeholder, update if you have
+    technologies: ["Next.js", "React.js", "Tailwind CSS", "Vercel"],
+    demo: "https://satyampandey.vercel.app",
+    github: "", // add if available
+  },
 ];
 
 
@@ -83,3 +127,18 @@ export const CONTACT = {
   phoneNo: "+91 8303081204 ",
   email: "pandeysatyam1708@gmail.com",
 };
+
+
+
+
+
+
+
+
+
+// MitrLok – (No link currently)
+// Real Estate AI Chatbot (PropBot) – https://propbotsp.vercel.app/
+// SarvaNews – http://thesarvanews.vercel.app
+// MovieManch – http://moviemanch.vercel.app
+// TextNova – http://textnova.vercel.app
+// MyPortfolio – https://satyampandey.vercel.app
