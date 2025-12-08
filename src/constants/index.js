@@ -1,82 +1,128 @@
+export const HERO_CONTENT = `Founding Full Stack Engineer & AI Developer with expertise in building scalable, real-time web applications and AI voice agents. I specialize in Next.js, Node.js, and Generative AI, architecting systems that drive user engagement and business growth. With a deep focus on performance and innovation, I transform complex ideas into seamless, high-impact digital solutions.`;
 
-export const HERO_CONTENT = `Frontend-Focused Full Stack Developer with 2+ years of experience building scalable UIs and real-time web applications. I specialize in React.js, Redux Toolkit, Next.js, and Node.js, and have hands-on experience with PostgreSQL, Prisma, and MongoDB. I enjoy transforming product ideas into fast, reliable, and user-centric solutions across the full stack.`;
-
-export const ABOUT_TEXT = `I'm a frontend-focused full stack developer with over 2 years of experience delivering robust and scalable web applications. My core tech stack includes React.js, Redux Toolkit, Next.js, Node.js, Express.js, PostgreSQL with Prisma ORM, and MongoDB. I’ve built enterprise systems, real-time dashboards, and secure APIs at companies like Hughes Systique and HighRadius. I take pride in crafting intuitive user interfaces backed by clean, efficient backend logic. Passionate about performance and product quality, I continuously explore new technologies and aim to build solutions that make a real impact.`;
+export const ABOUT_TEXT = `I am a Founding Full Stack Engineer with over 2 years of experience delivering robust and scalable web applications. Currently leading development at Cognitiev AI, I build real-time AI voice agents and scalable SaaS platforms using Next.js, Node.js, PostgreSQL, and OpenAI. I have a proven track record of scaling applications from 0 to 1, having built enterprise systems and secure APIs at companies like Hughes Systique and HighRadius. Passionate about AI-driven innovation, I continuously explore new technologies like Webhooks and Real-time Voice AI to create intuitive, user-centric solutions.`;
 
 export const EXPERIENCES = [
   {
-    year: "July, 2023 - October, 2024",
-    role: "Associate Engineer",
+    year: "June 2025 - Present",
+    role: "SDE2 - Cognitiev AI",
+    company: "Cognitiev AI",
+    description: `
+      <ul style="list-style-type: disc;TDPd-left: 20px;">
+        <li>Leading development of AI-driven products with Next.js, Node.js, PostgreSQL, and Prisma.</li>
+        <li>Enhanced real-time AI Voice Agent integrating OpenAI, WhatsApp API, and Webhooks for seamless communication.</li>
+        <li>Architected scalable backend systems and optimized cloud deployment pipelines for high availability.</li>
+        <li>Mentoring junior developers and actively contributing to system design and product strategy.</li>
+      </ul>
+    `,
+    technologies: ["Next.js", "Node.js", "PostgreSQL", "Prisma", "OpenAI", "WhatsApp API"],
+  },
+  {
+    year: "Nov 2024 - May 2025",
+    role: "SDE (Founding Engineer)",
+    company: "Cognitiev AI",
+    description: `
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        <li>Founding Full Stack Engineer building AI-driven apps using Next.js, Node.js, PostgreSQL, and Prisma.</li>
+        <li>Developed real-time AI Voice Agent from scratch with OpenAI, WhatsApp API, and Webhooks.</li>
+        <li>Authored conversational AI scripts and automated complex workflows via n8n and Make.com.</li>
+      </ul>
+    `,
+    technologies: ["Next.js", "Node.js", "PostgreSQL", "Prisma", "n8n", "Make.com"],
+  },
+  {
+    year: "July 2023 - Oct 2024",
+    role: "Associate Software Engineer",
     company: "Hughes Systique Corporation",
     description: `
-• Built version 4 of the application, transitioning from legacy technologies to a modern React-based architecture, enhancing performance and user experience (UX).<br>
-• Architected the project’s folder structure and implemented Redux, improving maintainability and scalability by 50%.<br>
-• Developed a comprehensive design system with reusable components, ensuring consistent UI/UX and reducing development time by 50%.<br>
-• Implemented cross-browser and cross-device testing, ensuring consistent user experiences across 15+ devices and browsers, boosting user satisfaction by 35%.<br>
-`,
-    technologies: ["Javascript", "React.js", "Redux Toolkit", "HTML", "CSS","Git","Github"],
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        <li><strong>EvueMe (AI Recruitment SaaS):</strong> Led frontend development with React.js and Redux Toolkit, implementing modern UI libraries.</li>
+        <li>Built a reusable component library, cutting development effort by 50% and ensuring design consistency.</li>
+        <li>Optimized state management with Redux Toolkit, successfully reducing API response times by 30%.</li>
+        <li><strong>Performance Management System (PMS):</strong> Developed a fully responsive UI with seamless RESTful API integration.</li>
+      </ul>
+    `,
+    technologies: ["React.js", "Redux Toolkit", "JavaScript", "REST APIs", "HTML/CSS"],
   },
   {
-    year: "Jan, 2023 - June, 2023",
+    year: "Jan 2023 - June 2023",
     role: "Trainee",
     company: "Hughes Systique Corporation",
-    description: `• Received comprehensive training in Java FullStack development, acquiring proficiency in Java, Spring Boot, React, Angular, SQL, and Docker.
-<br>
-• Explored the MERN stack independently, undertaking projects and developing an original product using React and Node.js.
-<br>
-• Also explored AWS S3, Lambda (serverless functions), and YouTube APIs while building my 1st product.
-
-`,
-    technologies: ["Javascript", "React.js", "Redux Toolkit", "HTML", "CSS","SQL","Angular","Java","Springboot"],
+    description: `
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        <li>Completed comprehensive 6-month training in Java FullStack development (Java, Spring Boot, React.js, Angular, SQL, Docker).</li>
+        <li>Built a MERN stack project incorporating AWS S3, Lambda, and YouTube API.</li>
+      </ul>
+    `,
+    technologies: ["Java", "Spring Boot", "React.js", "Angular", "SQL", "Docker", "AWS"],
   },
   {
-    year: "Jan, 2022 - Apr, 2022",
-    role: "Full Stack Developer Intern",
+    year: "Jan 2022 - Apr 2022",
+    role: "Software Developer Intern",
     company: "HighRadius",
-    description: `• Developed and maintained web applications using JavaScript, React.js, and Node.js. Designed and implemented RESTful APIs for data communication. Collaborated with cross-functional teams to deliver high-quality software products on schedule.`,
-    technologies: ["React", "Nodejs", "Express", "Mongodb"],
+    description: `
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        <li>Developed an invoice management system using React.js, Redux, and Flask.</li>
+        <li>Implemented real-time data visualization with Chart.js to enhance analytics insights.</li>
+        <li>Optimized API calls, reducing data-fetching time by 30%.</li>
+      </ul>
+    `,
+    technologies: ["React.js", "Redux", "Flask", "Chart.js"],
   },
 ];
 
 export const PROJECTS = [
   {
-    title: "Real Estate AI Chatbot (PropBot)",
+    title: "TheSarvaNews",
     description:
-      "A generative AI-powered chatbot for real estate queries. Integrates OpenAI API with function calling to provide conversational answers and property filtering by location and price.",
-    image: "/images/propbot.png", // placeholder, update if you have
-    technologies: [
-      "React.js",
-      "Tailwind CSS",
-      "Node.js",
-      "Express.js",
-      "OpenAI API",
-      "Vercel",
-    ],
-    demo: "https://propbotsp.vercel.app/",
-    github: "", // add if available
-  },
-  {
-    title: "SarvaNews",
-    description:
-      "A full-stack real-time news aggregator. The frontend fetches top headlines using NewsAPI, while the backend is built with Node.js and Express.js, using PostgreSQL and Prisma for storing user preferences and caching. Responsive and scalable.",
+      "A consolidated news aggregator fetching real-time headlines from multiple sources. Features category filters and a responsive React frontend, delivering fast access to curated content.",
     image: "/images/sarvanews.png",
     technologies: [
       "React.js",
       "Tailwind CSS",
+      "News API",
       "Node.js",
-      "Express.js",
-      "PostgreSQL",
-      "Prisma",
-      "NewsAPI",
-      "Vercel",
     ],
     demo: "https://thesarvanews.vercel.app/",
-    github: "https://github.com/satyam1708/sarvanews",
+    // github: "https://github.com/satyam1708/sarvanews",
+  },
+  {
+    title: "MitrLok",
+    description:
+      "A full-stack social networking app designed to connect users based on interests and location. Solved the lack of local social platforms by building a real-time chat system via Socket.IO and filtered connections.",
+    image: "/images/mitrlok.png", // Ensure you have this image in public/images folder
+    technologies: [
+      "Next.js",
+      "React.js",
+      "Redux",
+      "Node.js",
+      "PostgreSQL",
+      "Prisma",
+      "Socket.IO",
+      "Tailwind CSS",
+    ],
+    demo: "https://mitrlok-frontend.vercel.app/",
+    github: "", // Add link if available
+  },
+  {
+    title: "PropBots (Real Estate AI)",
+    description:
+      "A generative AI-powered chatbot for real estate. Solved inefficient inquiry handling by integrating OpenAI API with function calling to provide instant, conversational property recommendations.",
+    image: "/images/propbot.png",
+    technologies: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "OpenAI API",
+      "Tailwind CSS",
+    ],
+    demo: "https://propbotsp.vercel.app/",
+    github: "", 
   },
   {
     title: "MovieManch",
     description:
-      "A movie discovery app using TMDB API. Users can browse trending, upcoming, and top-rated movies with detailed information. Clean UI and responsive design.",
+      "A movie discovery platform using the TMDB API. Users can browse trending, upcoming, and top-rated movies with detailed information and a clean, responsive UI.",
     image: "/images/moviemanch.png",
     technologies: ["React.js", "TMDB API", "Tailwind CSS", "Vercel"],
     demo: "https://moviemanch.vercel.app/",
@@ -85,60 +131,25 @@ export const PROJECTS = [
   {
     title: "TextNova",
     description:
-      "A simple and fast text utility tool to convert text to different cases, count words/characters, and remove extra spaces. Built with performance and clean UI in mind.",
+      "A fast and efficient text utility tool for converting cases, counting characters, and formatting text. Built with performance and a clean user interface in mind.",
     image: "/images/textnova.png",
     technologies: ["React.js", "Tailwind CSS", "JavaScript", "Vercel"],
     demo: "https://textnova.vercel.app/",
     github: "https://github.com/satyam1708/textnova",
   },
   {
-    title: "MitrLok",
-    description:
-      "A full-stack social networking app designed to connect users based on interests and location. Features include real-time messaging, follow requests, user filtering, and secure authentication.",
-    image: "/images/mitrlok.png", // placeholder, update if you have
-    technologies: [
-      "Next.js",
-      "React.js",
-      "Redux",
-      "Node.js",
-      "Express.js",
-      "Prisma",
-      "PostgreSQL",
-      "Socket.io",
-      "Tailwind CSS",
-    ],
-    demo: "#", // no link currently
-    github: "", // add link if available
-  },
-  {
     title: "MyPortfolio",
     description:
-      "Personal portfolio website showcasing projects, skills, and experience. Built with a clean UI and responsive design.",
-    image: "/images/portfolio.png", // placeholder, update if you have
-    technologies: ["Next.js", "React.js", "Tailwind CSS", "Vercel"],
-    demo: "https://satyampandey.vercel.app",
-    github: "", // add if available
+      "Personal portfolio website showcasing my journey as a Full Stack Engineer. Features a responsive design, interactive UI, and detailed project showcases.",
+    image: "/images/portfolio.png",
+    technologies: ["Next.js", "React.js", "Tailwind CSS", "Framer Motion"],
+    demo: "https://satyam-pandey.vercel.app/",
+    github: "",
   },
 ];
 
-
 export const CONTACT = {
-  address: "Dwarikapuri Colony, Faizullaganj, Lucknow, Uttar Pradesh - 226020 ",
-  phoneNo: "+91 8303081204 ",
+  address: "Lucknow, Uttar Pradesh, India",
+  phoneNo: "+91-8303081204",
   email: "pandeysatyam1708@gmail.com",
 };
-
-
-
-
-
-
-
-
-
-// MitrLok – (No link currently)
-// Real Estate AI Chatbot (PropBot) – https://propbotsp.vercel.app/
-// SarvaNews – http://thesarvanews.vercel.app
-// MovieManch – http://moviemanch.vercel.app
-// TextNova – http://textnova.vercel.app
-// MyPortfolio – https://satyampandey.vercel.app
