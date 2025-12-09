@@ -1,8 +1,21 @@
 import { useState } from "react";
 import { PROJECTS } from "../constants";
 import { motion } from "framer-motion";
+import { Tilt } from 'react-tilt' // Optional: remove if you didn't install it
 
 const techOptions = ["All", ...new Set(PROJECTS.flatMap(p => p.technologies))];
+
+const defaultOptions = {
+	reverse:        false,  // reverse the tilt direction
+	max:            15,     // max tilt rotation (degrees)
+	perspective:    1000,   // Transform perspective, the lower the more extreme the tilt gets.
+	scale:          1.02,   // 2 = 200%, 1.5 = 150%, etc..
+	speed:          1000,   // Speed of the enter/exit transition
+	transition:     true,   // Set a transition on enter/exit.
+	axis:           null,   // What axis should be disabled. Can be X or Y.
+	reset:          true,   // If the tilt effect has to be reset on exit.
+	easing:         "ybier-bezier(.03,.98,.52,.99)",    // Easing on enter/exit.
+}
 
 function Projects() {
   const [selectedTech, setSelectedTech] = useState("All");
@@ -13,26 +26,26 @@ function Projects() {
       : PROJECTS.filter((p) => p.technologies.includes(selectedTech));
 
   return (
-    <div className="pb-10">
+    <div className="pb-20">
       <motion.h2
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -100 }}
         transition={{ duration: 1.2 }}
-        className="my-20 text-center text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent"
+        className="my-20 text-center text-4xl font-bold bg-gradient-to-b from-white to-stone-500 bg-clip-text text-transparent"
       >
-        Projects
+        Featured Projects
       </motion.h2>
 
-      {/* Filter Tabs - Glass Effect */}
+      {/* Filter Tabs */}
       <div className="flex flex-wrap justify-center gap-3 mb-16">
         {techOptions.map((tech, idx) => (
           <button
             key={idx}
             onClick={() => setSelectedTech(tech)}
-            className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-300 ${
+            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
               selectedTech === tech
-                ? "bg-purple-600 text-white border-purple-500 shadow-[0_0_15px_rgba(147,51,234,0.5)]"
-                : "bg-neutral-900 text-stone-400 border-neutral-800 hover:border-purple-500 hover:text-white"
+                ? "bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.4)]"
+                : "bg-stone-900/50 text-stone-400 border border-stone-800 hover:border-white/30"
             }`}
           >
             {tech}
@@ -41,69 +54,75 @@ function Projects() {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 gap-12 lg:gap-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
         {filteredProjects.map((project, index) => (
-          <motion.div
-            key={index}
-            className="flex flex-col lg:flex-row gap-8 items-start p-6 rounded-2xl border border-neutral-800 bg-neutral-900/30 hover:bg-neutral-900/60 transition-colors shadow-lg"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            whileHover={{ y: -5, boxShadow: "0 10px 30px -10px rgba(120, 50, 200, 0.3)" }}
-          >
-            {/* Image Container with 3D feel */}
+          <Tilt options={defaultOptions} key={index} className="h-full"> 
             <motion.div
-              className="w-full lg:w-1/3 flex-shrink-0 overflow-hidden rounded-xl border border-neutral-700/50"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="h-full bg-stone-900/40 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden flex flex-col group"
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
-              />
-            </motion.div>
+              {/* Image Section */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-start p-4">
+                     <span className="text-white font-bold text-lg">{project.title}</span>
+                </div>
+              </div>
 
-            {/* Details */}
-            <div className="w-full lg:w-2/3 flex flex-col justify-between h-full">
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-stone-300 mb-6 leading-relaxed">{project.description}</p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.map((tech, idx) => (
+              {/* Content Section */}
+              <div className="p-6 flex flex-col flex-grow">
+                <h3 className="text-xl font-bold mb-2 text-white group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                <p className="text-stone-400 text-sm mb-4 line-clamp-3">{project.description}</p>
+                
+                {/* Tech Tags */}
+                <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+                  {project.technologies.slice(0, 4).map((tech, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 text-xs font-semibold rounded-md bg-purple-900/30 text-purple-200 border border-purple-800/50"
+                      className="px-2 py-1 text-xs font-medium rounded bg-white/5 text-stone-300 border border-white/5"
                     >
                       {tech}
                     </span>
                   ))}
+                  {project.technologies.length > 4 && (
+                      <span className="px-2 py-1 text-xs font-medium rounded bg-white/5 text-stone-300 border border-white/5">
+                        +{project.technologies.length - 4}
+                      </span>
+                  )}
+                </div>
+
+                {/* Links */}
+                <div className="flex gap-3">
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 text-center py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-semibold transition-colors"
+                    >
+                      Live Demo
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 text-center py-2 bg-stone-800 hover:bg-stone-700 text-white rounded-lg text-sm font-semibold transition-colors border border-white/10"
+                    >
+                      Code
+                    </a>
+                  )}
                 </div>
               </div>
-
-              <div className="flex gap-4 mt-auto">
-                {project.demo && (
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-2 text-sm font-medium bg-white text-black rounded-lg hover:bg-gray-200 transition shadow-[0_0_10px_rgba(255,255,255,0.2)]"
-                  >
-                    Live Demo
-                  </a>
-                )}
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-2 text-sm font-medium bg-neutral-800 text-white rounded-lg border border-neutral-700 hover:bg-neutral-700 transition"
-                  >
-                    GitHub
-                  </a>
-                )}
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </Tilt>
         ))}
       </div>
     </div>
