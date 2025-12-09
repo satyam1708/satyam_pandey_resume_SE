@@ -1,138 +1,236 @@
+import { useEffect, useRef } from "react";
 import profilePic from "../assets/SatyamPandeyProfilePic.jpeg";
 import { HERO_CONTENT } from "../constants";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { Tilt } from "react-tilt";
+import { FaReact, FaNodeJs, FaBrain } from "react-icons/fa";
+import { SiOpenai, SiNextdotjs } from "react-icons/si";
 
+// Animation Variants
 const containerVariants = {
-  hidden: { opacity: 0, x: -100 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    x: 0,
     transition: {
-      duration: 0.5,
-      staggerChildren: 0.5,
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
     },
   },
 };
 
-const childVariants = {
-  hidden: { opacity: 0, x: -100 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+const textVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { type: "spring", stiffness: 50, damping: 20 } 
+  },
 };
 
+const floatIconVariants = {
+  initial: { y: 0 },
+  animate: (custom) => ({
+    y: [0, -15, 0],
+    transition: {
+      duration: 3 + custom, // random duration based on index
+      repeat: Infinity,
+      repeatType: "reverse",
+      ease: "easeInOut",
+    },
+  }),
+};
+
+// 3D Tilt Options
 const defaultTiltOptions = {
-  reverse: false, // reverse the tilt direction
-  max: 25, // max tilt rotation (degrees)
-  perspective: 1000, // Transform perspective, the lower the more extreme the tilt gets.
-  scale: 1.05, // 2 = 200%, 1.5 = 150%, etc..
-  speed: 1000, // Speed of the enter/exit transition
-  transition: true, // Set a transition on enter/exit.
-  axis: null, // What axis should be disabled. Can be X or Y.
-  reset: true, // If the tilt effect has to be reset on exit.
-  easing: "cubic-bezier(.03,.98,.52,.99)", // Easing on enter/exit.
+  reverse: false,
+  max: 15,
+  perspective: 1000,
+  scale: 1.02,
+  speed: 1000,
+  transition: true,
+  axis: null,
+  reset: true,
+  easing: "cubic-bezier(.03,.98,.52,.99)",
 };
 
 function Hero() {
+  // Parallax Effect Logic
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
+
   return (
-    <div className="pb-4 lg:mb-36 pt-24 lg:pt-32">
-      <div className="flex flex-wrap lg:flex-row-reverse items-center">
-        {/* Image Section with 3D Tilt & Float Effect */}
-        <div className="w-full lg:w-1/2">
-          <div className="flex justify-center lg:p-8">
+    <div ref={ref} className="relative pb-20 lg:mb-36 pt-28 lg:pt-40 overflow-visible">
+      {/* Background Decorator - Subtle Gradient Orb */}
+      <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-purple-900/20 rounded-full blur-[120px] -z-10 pointer-events-none mix-blend-screen" />
+      <div className="absolute bottom-[10%] left-[-10%] w-[400px] h-[400px] bg-blue-900/10 rounded-full blur-[100px] -z-10 pointer-events-none mix-blend-screen" />
+
+      <div className="flex flex-wrap lg:flex-row-reverse items-center justify-between">
+        
+        {/* ================= RIGHT SIDE: 3D IMAGE COMPOSITION ================= */}
+        <div className="w-full lg:w-1/2 relative z-10 perspective-1000">
+          <div className="flex justify-center lg:justify-end lg:pr-10">
+            {/* Floating Tech Icons Background */}
+            <motion.div 
+              variants={floatIconVariants} 
+              custom={1} 
+              animate="animate" 
+              className="absolute top-0 right-[10%] text-cyan-400 text-4xl opacity-80 z-20 hidden lg:block"
+            >
+              <FaReact />
+            </motion.div>
+            <motion.div 
+              variants={floatIconVariants} 
+              custom={2} 
+              animate="animate" 
+              className="absolute bottom-[20%] left-[10%] text-green-500 text-3xl opacity-80 z-20 hidden lg:block"
+            >
+              <FaNodeJs />
+            </motion.div>
+            <motion.div 
+              variants={floatIconVariants} 
+              custom={1.5} 
+              animate="animate" 
+              className="absolute top-[10%] left-[15%] text-white text-3xl opacity-60 z-20 hidden lg:block"
+            >
+              <SiNextdotjs />
+            </motion.div>
+
             <motion.div
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 1.2 }}
-              className="relative"
+              transition={{ duration: 1, delay: 0.5 }}
             >
-              {/* Floating Animation Wrapper */}
-              <motion.div
-                animate={{
-                  y: [0, -20, 0],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-                }}
-              >
-                <Tilt options={defaultTiltOptions}>
-                  <div className="relative group cursor-pointer">
-                    {/* 3D Neon Glow Effect behind image */}
-                    <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-3xl blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-                    
+              <Tilt options={defaultTiltOptions}>
+                <div className="relative group cursor-pointer w-full max-w-[550px]">
+                  
+                  {/* Neon Glow Backlight */}
+                  <div className="absolute -inset-1 bg-gradient-to-tr from-cyan-500 via-blue-600 to-purple-600 rounded-[2rem] blur-xl opacity-40 group-hover:opacity-80 transition duration-500" />
+                  
+                  {/* Main Image Container */}
+                  <div className="relative rounded-[2rem] overflow-hidden border border-white/10 bg-stone-900/80 backdrop-blur-sm shadow-2xl">
                     <img
                       src={profilePic}
                       alt="Satyam Pandey"
-                      className="relative z-10 border-2 border-white/20 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] w-[550px] h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+                      className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 grayscale-[10%] group-hover:grayscale-0 transform scale-100 group-hover:scale-105 transition-transform duration-700"
                     />
                     
-                    {/* Glass Overlay Effect for shine */}
-                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none"></div>
+                    {/* Glass Overlay Shine */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   </div>
-                </Tilt>
-              </motion.div>
+
+                  {/* Floating Glass Badge (Experience/Status) */}
+                  <motion.div 
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 1.5, duration: 0.8 }}
+                    className="absolute -bottom-6 -left-6 bg-stone-900/90 backdrop-blur-xl border border-white/10 p-4 rounded-2xl shadow-xl flex items-center gap-3 z-30"
+                  >
+                    <div className="bg-green-500/20 p-2 rounded-full">
+                      <FaBrain className="text-green-400 text-xl" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-stone-400 font-medium uppercase tracking-wider">Focus</p>
+                      <p className="text-sm text-white font-bold">Generative AI & SaaS</p>
+                    </div>
+                  </motion.div>
+
+                  {/* Floating Glass Badge (Founding Engineer) */}
+                  <motion.div 
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 1.8, duration: 0.8 }}
+                    className="absolute -top-6 -right-4 bg-stone-900/90 backdrop-blur-xl border border-white/10 p-3 rounded-2xl shadow-xl flex items-center gap-3 z-30"
+                  >
+                     <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse shadow-[0_0_10px_#3b82f6]"></div>
+                     <span className="text-xs font-bold text-white tracking-wide">FOUNDING ENGINEER</span>
+                  </motion.div>
+
+                </div>
+              </Tilt>
             </motion.div>
           </div>
         </div>
 
-        {/* Text Section */}
-        <div className="w-full lg:w-1/2">
+        {/* ================= LEFT SIDE: TEXT CONTENT ================= */}
+        <div className="w-full lg:w-1/2 mt-16 lg:mt-0 px-2">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="flex flex-col items-center lg:items-start mt-10"
+            className="flex flex-col items-center lg:items-start"
           >
-            {/* Badge */}
-            <motion.div
-              variants={childVariants}
-              className="mb-4 px-4 py-1.5 rounded-full border border-stone-700 bg-stone-900/50 backdrop-blur-sm"
-            >
-              <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-sm font-medium text-transparent">
-                Founding Engineer @ Cognitiev AI
-              </span>
+            {/* Status Badge */}
+            <motion.div variants={textVariants} className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-900/10 backdrop-blur-md">
+               <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                </span>
+               <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-xs font-bold tracking-widest text-transparent uppercase">
+                 Available for Innovation
+               </span>
             </motion.div>
 
-            <motion.h2
-              variants={childVariants}
-              className="pb-2 text-4xl tracking-tighter lg:text-8xl font-bold text-white"
+            <motion.h1
+              variants={textVariants}
+              className="pb-4 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-tight text-center lg:text-left"
             >
-              Satyam Pandey
-            </motion.h2>
+              Satyam <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-stone-100 via-stone-400 to-stone-100 animate-gradient bg-300%">
+                Pandey
+              </span>
+            </motion.h1>
 
-            <motion.span
-              variants={childVariants}
-              className="bg-gradient-to-r from-stone-300 via-stone-100 to-stone-600 bg-clip-text text-3xl tracking-tight text-transparent font-light"
-            >
-              Full Stack & AI Developer
-            </motion.span>
+            <motion.div variants={textVariants} className="mb-6 flex flex-col items-center lg:items-start">
+                <span className="text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-stone-300">
+                  Architecting <span className="font-semibold text-white">Scalable</span>
+                </span>
+                <span className="text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-stone-300">
+                  <span className="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent font-bold">AI Solutions</span> & Web Apps
+                </span>
+            </motion.div>
 
             <motion.p
-              variants={childVariants}
-              className="my-2 max-w-lg py-6 text-xl leading-relaxed tracking-tight text-stone-300"
+              variants={textVariants}
+              className="my-4 max-w-xl text-lg text-stone-400 leading-relaxed text-center lg:text-left"
             >
               {HERO_CONTENT}
             </motion.p>
 
-            <motion.div variants={childVariants} className="flex gap-4">
-              <a
+            <motion.div variants={textVariants} className="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
+              <motion.a
                 href="/Satyam_Pandey_UI_Developer.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 download
-                className="bg-white hover:bg-stone-200 text-stone-900 font-semibold rounded-full px-8 py-3 text-sm transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transform hover:-translate-y-1"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative overflow-hidden group bg-white text-black font-bold rounded-full px-8 py-4 text-center shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all"
               >
-                Download Resume
-              </a>
-              <a
+                <span className="relative z-10">Download Resume</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-stone-200 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </motion.a>
+              
+              <motion.a
                 href="#contact"
-                className="border border-white/20 hover:bg-white/10 text-white rounded-full px-8 py-3 text-sm transition-all hover:scale-105"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold text-center hover:bg-white/5 transition-colors backdrop-blur-sm"
               >
-                Contact Me
-              </a>
+                Let's Connect
+              </motion.a>
             </motion.div>
+
+            {/* Tech Stack Mini Bar */}
+            <motion.div variants={textVariants} className="mt-12 flex items-center gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <FaReact className="text-2xl" title="React" />
+                <SiNextdotjs className="text-2xl" title="Next.js" />
+                <FaNodeJs className="text-2xl" title="Node.js" />
+                <SiOpenai className="text-2xl" title="OpenAI" />
+                <div className="h-px w-20 bg-stone-700/50"></div>
+                <span className="text-xs font-mono text-stone-500">POWERED BY MODERN STACK</span>
+            </motion.div>
+
           </motion.div>
         </div>
       </div>
