@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import LifeJourney from "./components/LifeJourney"; // Import the new component
 import Technologies from "./components/Technologies";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
@@ -21,6 +22,12 @@ const App = () => {
       <div className="container mx-auto px-8">
         <Navbar/>
         <Hero/>
+        {/* New 3D Journey Section */}
+        <div className="relative z-20 mb-20"> 
+             <h2 className="text-center text-4xl font-bold text-white mb-10 pt-20">My Life Journey</h2>
+             <p className="text-center text-stone-400 mb-10">Scroll down to explore the timeline</p>
+             <LifeJourney/>
+        </div>
         <Technologies/>
         <Projects/>
         <Experience/>
